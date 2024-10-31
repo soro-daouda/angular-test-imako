@@ -9,12 +9,14 @@
   <div class="box-new-contact">
     <p-button
       (onClick)="openModal()"
-      label="Ajouter un contact"
+      label="Ajouter un contact +"
       severity="contrast"
     />
   </div>
   <p-table
     [value]="contactService.contactList"
+    [scrollable]="true"
+    scrollHeight="450px"
     [tableStyle]="{ 'min-width': '50rem' }"
   >
     <ng-template pTemplate="header">

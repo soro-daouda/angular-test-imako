@@ -68,6 +68,9 @@ td {
 }
 
 .box-new-contact {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   text-align: end;
   margin-bottom: 1rem;
 }
