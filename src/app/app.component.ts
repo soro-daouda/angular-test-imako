@@ -38,6 +38,8 @@ import { imageFileExtention } from './core/utils/imageExtensionValidator';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
+  defaultPicture: string =
+    'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png';
   contactService = inject(ContactService);
   confirmationService = inject(ConfirmationService);
   isModaleVisible = signal(false);

@@ -37,6 +37,7 @@ body {
 .profile-form img {
   width: 9rem;
   height: 9rem;
+  object-fit: cover;
 }
 
 .profile-form input {
@@ -50,9 +51,10 @@ body {
 }
 
 .profile-form label {
-  background-color: var(--primary);
-  padding: 0.8rem 2rem;
-  border-radius: 7px;
+  background-color: #2e2724;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  font-size: 0.8rem;
   color: var(--white);
 }
 
@@ -64,9 +66,9 @@ body {
 
 .dialog-box form div input {
   width: 100%;
-  border: 2px solid var(--gray);
-  padding: 0.7rem;
-  border-radius: 7px;
+  border: 2px solid #e2e7ed;
+  padding: 0.8rem;
+  border-radius: 4px;
 }
 
 .failure {
@@ -110,4 +112,16 @@ body {
   width: 2rem;
   padding: 0.3rem 0;
   margin-right: 0.7rem;
+}
+
+.p-dialog .p-dialog-header {
+  background: #131921;
+  color: var(--white);
+  padding: 0.8rem 1.5rem;
+}
+
+.p-dialog .p-dialog-header .p-dialog-header-icon {
+  background-color: var(--white);
+  height: 1.5rem;
+  width: 1.5rem;
 }

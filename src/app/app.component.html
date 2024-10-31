@@ -88,9 +88,13 @@
   (onHide)="closeAndRestAddContactForm()"
 >
   <div class="dialog-box">
-    <form [formGroup]="addContactForm" class="flex flex-row items-center gap-5">
+    <form [formGroup]="addContactForm">
       <div class="profile-form">
-        <img [src]="profilePhoto" alt="" srcset="" />
+        <img
+          [src]="profilePhoto ? profilePhoto : defaultPicture"
+          alt=""
+          srcset=""
+        />
         <div>
           <input
             (change)="onPhotoSelected($event)"
