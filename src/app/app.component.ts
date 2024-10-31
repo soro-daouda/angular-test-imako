@@ -169,8 +169,8 @@ export class AppComponent {
       id: id!,
     };
     this.contactService.registerOrUpdate(newContact);
-    this.addContactForm.reset();
-    this.closeModal();
+    // this.addContactForm.reset();
+    this.closeAndRestAddContactForm();
   }
 
   runDeleteContactById(id: number) {

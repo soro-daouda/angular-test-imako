@@ -83,6 +83,7 @@
   header="Contact"
   [(visible)]="isModaleVisible"
   [style]="{ width: '40rem' }"
+  (onHide)="closeAndRestAddContactForm()"
 >
   <div class="dialog-box">
     <form [formGroup]="addContactForm" class="flex flex-row items-center gap-5">
