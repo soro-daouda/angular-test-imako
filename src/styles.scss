@@ -1,1 +1,85 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playwrite+ES+Deco:wght@100..400&display=swap");
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+
+:root {
+  --primary: #5b9bd5;
+  --white: hsl(0, 0%, 100%);
+  --gray: hsl(220, 14%, 75%);
+  --reg: red;
+}
+
+*:not([class^="p-"]) {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+  list-style: none;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  height: 100vh;
+}
+
+.dialog-box {
+  padding: 0 1rem 2rem 1rem;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.profile-form img {
+  width: 9rem;
+  height: 9rem;
+}
+
+.profile-form input {
+  display: none;
+}
+
+.profile-form div {
+  display: flex;
+  flex-direction: column-reverse;
+  height: 9rem;
+}
+
+.profile-form label {
+  background-color: var(--primary);
+  padding: 0.8rem 2rem;
+  border-radius: 7px;
+  color: var(--white);
+}
+
+.dialog-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dialog-box form div input {
+  width: 100%;
+  border: 2px solid var(--gray);
+  padding: 0.7rem;
+  border-radius: 7px;
+}
+
+.failure {
+  color: var(--reg);
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+  background-color: #1f2937 !important;
+  color: var(--white) !important;
+}
+
+.p-button.p-button-icon-only {
+  width: 2rem;
+  padding: 0.3rem 0;
+  margin-right: 0.7rem;
+}

@@ -1,1 +1,165 @@
-<p>My Contact Manager</p>
+<p-confirmDialog />
+<header class="header">
+  <div>
+    <h2>gestionnaire de contact</h2>
+  </div>
+</header>
+
+<main class="main">
+  <div class="box-new-contact">
+    <p-button
+      (onClick)="openModal()"
+      label="Ajouter un contact"
+      severity="contrast"
+    />
+  </div>
+  <p-table
+    [value]="contactService.contactList"
+    [tableStyle]="{ 'min-width': '50rem' }"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Prénom</th>
+        <th>Nom</th>
+        <th>Numéro de téléphone</th>
+        <th>Adresse e-mail</th>
+        <th>Photos</th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-contact>
+      <tr>
+        <td>{{ contact.lastName }}</td>
+        <td>{{ contact.firstName }}</td>
+        <td>{{ contact.phone }}</td>
+        <td>{{ contact.email }}</td>
+        <td>
+          <img class="profile" [src]="contact.profilePhoto" alt="" srcset="" />
+        </td>
+
+        <td>
+          <p-button
+            (click)="openEditModal(contact)"
+            pTooltip="Modifier ce contact"
+            tooltipPosition="left"
+            icon="pi pi-pencil"
+            [rounded]="false"
+            [text]="true"
+            [raised]="true"
+            severity="info"
+          />
+
+          <p-button
+            (click)="
+              openDeleteContactPopUp({ event: $event, contactId: contact.id })
+            "
+            pTooltip="Supprimer ce contact"
+            tooltipPosition="left"
+            icon="pi pi-trash"
+            [rounded]="false"
+            [text]="true"
+            [raised]="true"
+            severity="danger"
+          />
+        </td>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="6" style="text-align: center">Aucun Contact :)</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</main>
+
+<footer class="footer">
+  <small>DevFront © Tous droits réservés.</small>
+</footer>
+
+<p-dialog
+  [modal]="true"
+  header="Contact"
+  [(visible)]="isModaleVisible"
+  [style]="{ width: '40rem' }"
+>
+  <div class="dialog-box">
+    <form [formGroup]="addContactForm" class="flex flex-row items-center gap-5">
+      <div class="profile-form">
+        <img [src]="profilePhoto" alt="" srcset="" />
+        <div>
+          <input
+            (change)="onPhotoSelected($event)"
+            type="file"
+            id="select_image"
+          />
+          <label for="select_image">Ajouter une photo</label>
+        </div>
+      </div>
+      <p-messages
+        [(value)]="messages"
+        [enableService]="false"
+        [closable]="false"
+      />
+      <div>
+        <input
+          type="text"
+          placeholder="Saisissez votre nom"
+          formControlName="lastName"
+        />
+        @if(isEmptyLastName){
+        <small class="failure">Veuillez saisir votre nom</small>
+        }
+      </div>
+      <div>
+        <input
+          type="text"
+          placeholder="Saisissez votre prénom"
+          formControlName="firstName"
+        />
+        @if(isEmptyFirstName){
+        <small class="failure">Veuillez saisir votre prénom</small>
+        }
+      </div>
+      <div>
+        <input
+          type="text"
+          placeholder="Saisissez votre numéro de téléphone"
+          formControlName="phone"
+        />
+        @if(isEmptyPhone){
+        <small class="failure">
+          {{
+            isInvalidPhoneFormat
+              ? "Le numéro de téléphone doit commencer par 07, 01 ou 05 et contenir exactement 10 chiffres."
+              : "Veuillez saisir votre numéro de téléphone"
+          }}
+        </small>
+        }
+      </div>
+      <div>
+        <input
+          type="email"
+          placeholder="Saisissez votre adresse e-mail"
+          formControlName="email"
+        />
+        @if(isEmptyEmail){
+        <small class="failure">
+          {{
+            isInvalidEmailFormat
+              ? "Veuillez une adresse email valide"
+              : "Veuillez saisir votre adresse email"
+          }}
+        </small>
+        }
+      </div>
+      <p-button
+        [disabled]="addContactForm.invalid"
+        (onClick)="runRegisterContact()"
+        label="Enregistrer le contact"
+        severity="contrast"
+      />
+    </form>
+  </div>
+</p-dialog>
